@@ -5,7 +5,7 @@ import './resposta.dart';
 class Questionario extends StatelessWidget {
   final int perguntaSelecionada;
   final List<Map<String, Object>> perguntas;
-  final void Function() quandoResponder;
+  final void Function(int) quandoResponder;
 
   Questionario({
     //Decorator @required força que o parâmetros sejam passados
@@ -28,8 +28,12 @@ class Questionario extends StatelessWidget {
       children: <Widget>[
         Questao(perguntas[perguntaSelecionada]['texto']),
         ...respostas
-            .map((resp) => Resposta(resp['texto'],
-                quandoResponder)) // função .map não pode retornar null
+            .map(
+              (resp) => Resposta(
+                resp['texto'],
+                () => quandoResponder(resp['pontuacao']),
+              ),
+            ) // função .map não pode retornar null
             .toList(),
       ],
     );
