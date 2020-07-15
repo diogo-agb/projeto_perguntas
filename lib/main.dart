@@ -32,7 +32,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   final List<Map<String, Object>> _perguntas = const [
     {
-      'texto': 'Qual é a sua cor favorita?',
+      'texto': 'Teste Git', //Qual é a sua cor favorita?
       'respostas': [
         {'texto': 'Preto', 'pontuacao': 10},
         {'texto': 'Vermelho', 'pontuacao': 5},
